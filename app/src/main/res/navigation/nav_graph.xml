@@ -9,5 +9,16 @@
         android:id="@+id/loginFragment"
         tools:layout="@layout/fragment_login"
         android:name="com.example.hackathon.feature.login.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/exerciseFragment"
+
+        android:name="com.example.hackathon.feature.exercise.ExerciseFragment"
+        android:label="fragment_exercise"
+        tools:layout="@layout/fragment_exercise" />
 </navigation>

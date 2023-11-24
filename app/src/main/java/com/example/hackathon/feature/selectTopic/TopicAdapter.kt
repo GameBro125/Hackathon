@@ -11,13 +11,13 @@ import com.example.hackathon.domain.UITopic
 
 class TaskAdapter(
 
-) : ListAdapter<UITopic, TaskListViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<UITopic, TopicListViewHolder>(DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskListViewHolder {
-        return TaskListViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopicListViewHolder {
+        return TopicListViewHolder(parent)
     }
 
-    override fun onBindViewHolder(holder: TaskListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TopicListViewHolder, position: Int) {
         val topic: UITopic = getItem(position)
         val binding = holder.binding
         val context = binding.root.context
@@ -39,7 +39,7 @@ private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UITopic>() {
     }
 }
 
-class TaskListViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
+class TopicListViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(R.layout.select_topic, parent, false)
 ) {
     val binding: SelectTopicBinding = SelectTopicBinding.bind(itemView)
