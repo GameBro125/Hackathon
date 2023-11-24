@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.hackathon.R
 
 
-class SelectTopic : Fragment() {
+class SelectTopicFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
