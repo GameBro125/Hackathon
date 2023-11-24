@@ -20,4 +20,6 @@
     <color name="blue_400">#2964D6</color> <!-- Text & Icons-->
     <color name="blue_500">#2964D6</color> <!-- BG-->
     <color name="blue_600">#202C80</color>
+    <color name="green">#8BC34A</color>
+    <color name="red">#E91E63</color>
 </resources>

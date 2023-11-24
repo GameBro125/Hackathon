@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/exerciseFragment">
 
     <fragment
         android:id="@+id/loginFragment"
-        tools:layout="@layout/fragment_login"
         android:name="com.example.hackathon.feature.login.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_exerciseFragment"
-            app:destination="@id/exerciseFragment" />
+            android:id="@+id/action_loginFragment_to_selectTopicFragment"
+            app:destination="@id/selectTopicFragment" />
+
     </fragment>
 
     <fragment
@@ -21,4 +22,9 @@
         android:name="com.example.hackathon.feature.exercise.ExerciseFragment"
         android:label="fragment_exercise"
         tools:layout="@layout/fragment_exercise" />
+    <fragment
+        android:id="@+id/selectTopicFragment"
+        android:name="com.example.hackathon.feature.selectTopic.SelectTopicFragment"
+        android:label="fragment_select_topic"
+        tools:layout="@layout/fragment_select_topic" />
 </navigation>
