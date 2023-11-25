@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon.R
 import com.example.hackathon.databinding.FragmentExerciseResultBinding
@@ -29,6 +31,13 @@ class ExerciseResultFragment : Fragment() {
         val errorCount = arguments?.getInt("errorCount", 0) ?: 0
 
         binding.mistakesResult.text = "$errorCount ошибок"
+
+        binding.toMainButton.setOnClickListener {
+            // Переходим на главный экран
+            findNavController().navigate(R.id.action_exerciseResultFragment_to_selectTaskFragment)
+        }
+
+
     }
 
     override fun onDestroyView() {

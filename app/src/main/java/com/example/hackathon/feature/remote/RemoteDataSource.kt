@@ -17,7 +17,7 @@ interface RestCountriesApi {
 
     @POST("login")
     suspend fun login(
-        @Body request: LoginRequest
+        @Body request: User
     ): Response<User>
 }
 
