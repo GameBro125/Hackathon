@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.hackathon.R
 import com.example.hackathon.databinding.FragmentExerciseBinding
+import com.example.hackathon.domain.testData
 import com.google.android.material.chip.Chip
 
 
@@ -33,12 +34,7 @@ class ExerciseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // реализовать через бек
-        wordList = listOf(
-            WordEmphasis("Кот", 1),
-            WordEmphasis("Собака", 3),
-            WordEmphasis("Дом", 1),
-            WordEmphasis("Рыба", 3)
-        )
+        wordList = testData
 
         // Добавляем чипам буквы
         setChipLetters()
