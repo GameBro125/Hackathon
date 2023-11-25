@@ -22,3 +22,4 @@ val testData: List<WordEmphasis> = listOf(
     WordEmphasis("статуя", 2),
     WordEmphasis("эксперт", 4)
 )
+val resultData: List<WordEmphasis> = mutableListOf()

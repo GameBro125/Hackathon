@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.hackathon.R
 import com.example.hackathon.databinding.FragmentExerciseBinding
-import com.example.hackathon.domain.testData
+import com.example.hackathon.domain.*
 import com.google.android.material.chip.Chip
+
 
 
 class ExerciseFragment : Fragment() {
@@ -23,9 +25,11 @@ class ExerciseFragment : Fragment() {
     private var currentWordIndex = 0
     private var errorCount = 0
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         _binding = FragmentExerciseBinding.inflate(inflater, container, false)
         return binding.root
@@ -102,7 +106,7 @@ class ExerciseFragment : Fragment() {
                 showToast("Неправильный выбор!")
                 clickedChip.setChipBackgroundColorResource(R.color.red)
                 errorCount++ // Увеличиваем счетчик ошибок
-                binding.mistakeCount.text = "Ошибки: " + errorCount.toString()
+                binding.mistakeCount.text = "Ошибок: $errorCount"
             }
             binding.nextButton.isInvisible = false
 
@@ -111,18 +115,18 @@ class ExerciseFragment : Fragment() {
 
     private fun goToNextWord() {
         if (currentWordIndex < wordList.size - 1) {
-            // Переходим к следующему слову
             currentWordIndex++
-            binding.chipGroup.removeAllViews() // Очищаем ChipGroup
-            setChipLetters() // Добавляем новые чипы для следующего слова
-            binding.excNumber.text = (currentWordIndex+1).toString() + "/${wordList.size}"
-            binding.nextButton.isInvisible= false
-
+            binding.chipGroup.removeAllViews()
+            setChipLetters()
+            binding.excNumber.text = (currentWordIndex + 1).toString() + "/${wordList.size}"
+            binding.nextButton.isInvisible = false
         } else {
-
-            showToast("Вы закончили упражнение!\nКоличество ошибок: $errorCount")
+            val bundle = Bundle()
+            bundle.putInt("errorCount", errorCount)
+            findNavController().navigate(R.id.action_exerciseFragment_to_exerciseResultFragment, bundle)
         }
     }
+
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()

@@ -21,7 +21,11 @@
 
         android:name="com.example.hackathon.feature.exercise.ExerciseFragment"
         android:label="fragment_exercise"
-        tools:layout="@layout/fragment_exercise" />
+        tools:layout="@layout/fragment_exercise" >
+        <action
+            android:id="@+id/action_exerciseFragment_to_exerciseResultFragment"
+            app:destination="@id/exerciseResultFragment" />
+    </fragment>
     <fragment
         android:id="@+id/selectTopicFragment"
         android:name="com.example.hackathon.feature.selectTopic.SelectTopicFragment"
@@ -41,4 +45,9 @@
             android:id="@+id/action_selectTaskFragment_to_exerciseFragment"
             app:destination="@id/exerciseFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/exerciseResultFragment"
+        android:name="com.example.hackathon.feature.exercise.ExerciseResultFragment"
+        android:label="fragment_exercise_result"
+        tools:layout="@layout/fragment_exercise_result" />
 </navigation>
