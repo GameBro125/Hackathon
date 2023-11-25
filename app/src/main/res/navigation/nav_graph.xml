@@ -11,8 +11,8 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_selectTopicFragment"
-            app:destination="@id/selectTopicFragment" />
+            android:id="@+id/action_loginFragment_to_selectTaskFragment"
+            app:destination="@id/selectTaskFragment" />
 
     </fragment>
 
@@ -29,6 +29,16 @@
         tools:layout="@layout/fragment_select_topic" >
         <action
             android:id="@+id/action_selectTopicFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/selectTaskFragment"
+        tools:layout="@layout/fragment_select_task"
+        android:name="com.example.hackathon.feature.selectTask.SelectTaskFragment"
+        android:label="SelectTaskFragment" >
+        <action
+            android:id="@+id/action_selectTaskFragment_to_exerciseFragment"
             app:destination="@id/exerciseFragment" />
     </fragment>
 </navigation>

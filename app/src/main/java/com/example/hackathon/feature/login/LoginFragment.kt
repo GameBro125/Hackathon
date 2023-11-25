@@ -27,8 +27,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonAuth.setOnClickListener {
-
-            findNavController().navigate(R.id.action_loginFragment_to_selectTopicFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_selectTaskFragment)
         }
     }
 

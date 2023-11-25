@@ -15,8 +15,8 @@
     <color name="stroke_7">#12000000</color>
     <color name="stroke_card">#EEF3FF</color>
     <color name="blue_100">#EEF3FF</color>
-    <color name="blue_200">#E3EAFA</color>
-    <color name="blue_300">#A3B5D7</color>
+    <color name="blue_200">#DDE7FF</color>
+    <color name="blue_300">#BBD3FF</color>
     <color name="blue_400">#2964D6</color> <!-- Text & Icons-->
     <color name="blue_500">#2964D6</color> <!-- BG-->
     <color name="blue_600">#202C80</color>
