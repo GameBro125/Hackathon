@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -22,11 +23,10 @@ class SelectTopicFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_select_topic, container, false)
 
         recyclerView = view.findViewById(R.id.topicRecyclerView)
-        val topics = listOf("Орфоэпия", "Будет в будущем", "Будет в будущем") // Замените на ваши темы
+        val topics = listOf("Орфоэпия", "Будет в будущем", "Будет в будущем")
         adapter = AdapterSelectTopic(topics) { selectedTopic ->
+            findNavController().navigate(R.id.action_selectTopicFragment_to_exerciseFragment)
             // Обработка выбора темы
-            // Можно вызвать метод для перехода к следующему фрагменту с выбранной темой
-            // Например: navigateToNextFragment(selectedTopic)
         }
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -35,8 +35,7 @@ class SelectTopicFragment : Fragment() {
         return view
     }
 
-    // Метод для перехода к следующему фрагменту с выбранной темой
     private fun navigateToNextFragment(selectedTopic: String) {
-        // Реализуйте переход к следующему фрагменту здесь
+
     }
 }

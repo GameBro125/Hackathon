@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import com.example.hackathon.R
 import com.example.hackathon.databinding.FragmentExerciseBinding
@@ -30,15 +31,17 @@ class ExerciseFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // реализовать через бек
         wordList = testData
-
+        binding.excNumber.text = "1"
+        binding.excNumber.text = "0/${wordList.size}"
         // Добавляем чипам буквы
         setChipLetters()
-
+        binding.nextButton.isInvisible = true
         // Устанавливаем обработчик для ChipGroup
         binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
             val selectedChip = group.findViewById<Chip>(checkedId)
@@ -81,7 +84,7 @@ class ExerciseFragment : Fragment() {
     }
 
     private fun onChipSelected(selectedChip: Chip?) {
-
+        binding.nextButton.isInvisible = true
     }
 
     private fun onChipClicked(clickedChip: Chip?) {
@@ -93,12 +96,16 @@ class ExerciseFragment : Fragment() {
                 // Правильный выбор
                 showToast("Верный выбор!")
                 clickedChip.setChipBackgroundColorResource(R.color.green)
+
             } else {
                 // Неправильный выбор
                 showToast("Неправильный выбор!")
                 clickedChip.setChipBackgroundColorResource(R.color.red)
                 errorCount++ // Увеличиваем счетчик ошибок
+                binding.mistakeCount.text = "Ошибки: " + errorCount.toString()
             }
+            binding.nextButton.isInvisible = false
+
         }
     }
 
@@ -108,8 +115,11 @@ class ExerciseFragment : Fragment() {
             currentWordIndex++
             binding.chipGroup.removeAllViews() // Очищаем ChipGroup
             setChipLetters() // Добавляем новые чипы для следующего слова
+            binding.excNumber.text = (currentWordIndex+1).toString() + "/${wordList.size}"
+            binding.nextButton.isInvisible= false
+
         } else {
-            // Достигнут конец списка слов
+
             showToast("Вы закончили упражнение!\nКоличество ошибок: $errorCount")
         }
     }

@@ -26,5 +26,9 @@
         android:id="@+id/selectTopicFragment"
         android:name="com.example.hackathon.feature.selectTopic.SelectTopicFragment"
         android:label="fragment_select_topic"
-        tools:layout="@layout/fragment_select_topic" />
+        tools:layout="@layout/fragment_select_topic" >
+        <action
+            android:id="@+id/action_selectTopicFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
+    </fragment>
 </navigation>

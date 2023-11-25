@@ -6,9 +6,19 @@ data class WordEmphasis(
 )
 
 val testData: List<WordEmphasis> = listOf(
-    WordEmphasis("Кот", 2),
-    WordEmphasis("Собака", 4),
-    WordEmphasis("Дом", 1),
-    WordEmphasis("Рыба", 3),
-    // Добавьте больше слов с индексами ударений по мере необходимости
+    WordEmphasis("туфля", 4),
+    WordEmphasis("дефис", 3),
+    WordEmphasis("диспансер", 7),
+    WordEmphasis("досуг", 3),
+    WordEmphasis("жалюзи", 5),
+    WordEmphasis("еретик", 4),
+    WordEmphasis("значимость", 2),
+    WordEmphasis("иксы", 0),
+    WordEmphasis("конусов", 1),
+    WordEmphasis("краны", 2),
+    WordEmphasis("недруг", 1),
+    WordEmphasis("поручни", 1),
+    WordEmphasis("свелка", 2),
+    WordEmphasis("статуя", 2),
+    WordEmphasis("эксперт", 4)
 )
