@@ -1,20 +1,19 @@
 package com.example.hackathon.feature.exercise
 
-import com.example.hackathon.domain.WordEmphasis
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.hackathon.R
 import com.example.hackathon.databinding.FragmentExerciseBinding
-import com.example.hackathon.domain.*
+import com.example.hackathon.domain.WordEmphasis
+import com.example.hackathon.domain.testData
 import com.google.android.material.chip.Chip
-
+import com.google.android.material.chip.ChipDrawable
+import com.google.android.material.snackbar.Snackbar
 
 
 class ExerciseFragment : Fragment() {
@@ -25,12 +24,10 @@ class ExerciseFragment : Fragment() {
     private var currentWordIndex = 0
     private var errorCount = 0
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
-    ): View? {
+    ): View {
         _binding = FragmentExerciseBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -72,14 +69,15 @@ class ExerciseFragment : Fragment() {
         }
 
     }
+
     private fun setChipLetters() {
 
         val currentWord = wordList[currentWordIndex].word
 
-
-
         for (i in currentWord.indices) {
             val chip = Chip(requireContext())
+            val chipDrawable = ChipDrawable.createFromAttributes(requireContext(), null, 0, R.style.OperationChip)
+            chip.setChipDrawable(chipDrawable)
             chip.id = View.generateViewId()
             chip.text = currentWord[i].toString()
             chip.isClickable = true
@@ -129,7 +127,9 @@ class ExerciseFragment : Fragment() {
 
 
     private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        val snackbar = Snackbar
+            .make(binding.root, message, Snackbar.LENGTH_LONG)
+        snackbar.show()
     }
 
     override fun onDestroyView() {
