@@ -1,19 +1,23 @@
 package com.example.hackathon.feature.exercise
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isInvisible
+import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.hackathon.R
 import com.example.hackathon.databinding.FragmentExerciseBinding
 import com.example.hackathon.domain.WordEmphasis
 import com.example.hackathon.domain.testData
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipDrawable
+import com.example.hackathon.dpToPx
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class ExerciseFragment : Fragment() {
@@ -33,6 +37,7 @@ class ExerciseFragment : Fragment() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -42,82 +47,83 @@ class ExerciseFragment : Fragment() {
         binding.excNumber.text = "0/${wordList.size}"
         // Добавляем чипам буквы
         setChipLetters()
-        binding.nextButton.isInvisible = true
-        // Устанавливаем обработчик для ChipGroup
-        binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
-            val selectedChip = group.findViewById<Chip>(checkedId)
-            onChipSelected(selectedChip)
-        }
 
         // Костыль. .
-        for (i in 0 until binding.chipGroup.childCount) {
-            val chip = binding.chipGroup.getChildAt(i) as? Chip
+        for (i in 0 until binding.chipGroupContainer.childCount) {
+            val chip = binding.chipGroupContainer.getChildAt(i) as? MaterialButton
             chip?.setOnClickListener {
                 onChipClicked(chip)
             }
         }
 
-        // Добавляем обработчик для кнопки перехода к следующему слову
-        binding.nextButton.setOnClickListener {
-            goToNextWord()
-            for (i in 0 until binding.chipGroup.childCount) {
-                val chip = binding.chipGroup.getChildAt(i) as? Chip
-                chip?.setOnClickListener {
-                    onChipClicked(chip)
-                }
-            }
+        binding.materialToolbar.setNavigationOnClickListener {
+            findNavController().popBackStack()
         }
-
     }
 
+    @SuppressLint("ResourceType")
     private fun setChipLetters() {
 
         val currentWord = wordList[currentWordIndex].word
 
         for (i in currentWord.indices) {
-            val chip = Chip(requireContext())
-            val chipDrawable = ChipDrawable.createFromAttributes(requireContext(), null, 0, R.style.OperationChip)
-            chip.setChipDrawable(chipDrawable)
+
+            val chip: Button = MaterialButton(requireContext())
             chip.id = View.generateViewId()
             chip.text = currentWord[i].toString()
             chip.isClickable = true
-            binding.chipGroup.addView(chip)
+            binding.chipGroupContainer.addView(chip)
+            val childAt = binding.chipGroupContainer.getChildAt(i)
+            val layoutParams = childAt?.layoutParams
+            val marginLayoutParams = childAt.layoutParams as? ViewGroup.MarginLayoutParams
+            marginLayoutParams?.rightMargin = 12.dpToPx()
+            layoutParams?.width = 64.dpToPx()
+            layoutParams?.height = 64.dpToPx()
         }
     }
 
-    private fun onChipSelected(selectedChip: Chip?) {
-        binding.nextButton.isInvisible = true
-    }
-
-    private fun onChipClicked(clickedChip: Chip?) {
+    @SuppressLint("ResourceAsColor")
+    private fun onChipClicked(clickedChip: MaterialButton?) {
         clickedChip?.let {
-            val selectedLetterIndex = binding.chipGroup.indexOfChild(clickedChip)
+            val selectedLetterIndex = binding.chipGroupContainer.indexOfChild(clickedChip)
             val emphasisIndex = wordList[currentWordIndex].emphasisIndex
 
             if (selectedLetterIndex == emphasisIndex) {
                 // Правильный выбор
                 showToast("Верный выбор!")
-                clickedChip.setChipBackgroundColorResource(R.color.green)
+                clickedChip.setBackgroundColor(clickedChip.context.resources.getColor(R.color.green))
 
             } else {
                 // Неправильный выбор
-                showToast("Неправильный выбор!")
-                clickedChip.setChipBackgroundColorResource(R.color.red)
+                clickedChip.setBackgroundColor(clickedChip.context.resources.getColor(R.color.red))
                 errorCount++ // Увеличиваем счетчик ошибок
                 binding.mistakeCount.text = "Ошибок: $errorCount"
             }
-            binding.nextButton.isInvisible = false
 
+            lifecycleScope.launch {
+                delay(700)
+                goToNextWord()
+                for (i in 0 until binding.chipGroupContainer.childCount) {
+                    val chip = binding.chipGroupContainer.getChildAt(i) as? MaterialButton
+                    chip?.setOnClickListener {
+                        onChipClicked(chip)
+                    }
+                }
+            }
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun goToNextWord() {
         if (currentWordIndex < wordList.size - 1) {
             currentWordIndex++
-            binding.chipGroup.removeAllViews()
+            binding.chipGroupContainer.removeAllViews()
             setChipLetters()
+            lifecycleScope.launch {
+                delay(20)
+                binding.scroll.smoothScrollTo(0, 0)
+            }
             binding.excNumber.text = (currentWordIndex + 1).toString() + "/${wordList.size}"
-            binding.nextButton.isInvisible = false
         } else {
             val bundle = Bundle()
             bundle.putInt("errorCount", errorCount)

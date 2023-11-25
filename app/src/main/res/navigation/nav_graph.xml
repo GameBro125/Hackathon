@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_selectTaskFragment"
-            app:destination="@id/selectTaskFragment" />
+            app:destination="@id/selectTaskFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="false" />
 
     </fragment>
 
@@ -43,7 +45,9 @@
         android:label="SelectTaskFragment" >
         <action
             android:id="@+id/action_selectTaskFragment_to_exerciseFragment"
-            app:destination="@id/exerciseFragment" />
+            app:destination="@id/exerciseFragment"
+            app:popUpTo="@id/selectTaskFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/exerciseResultFragment"

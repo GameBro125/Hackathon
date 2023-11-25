@@ -17,11 +17,11 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title_select_task"
             style="@style/TextButton"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/san_francisco_bold"
             android:text="Тренировка"
             android:textSize="24sp"
@@ -33,8 +33,8 @@
             android:id="@+id/prgressField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
             app:cardCornerRadius="24dp"
             app:cardElevation="0dp"
             app:layout_constraintStart_toStartOf="@+id/title_select_task"
@@ -66,9 +66,9 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/title_pr"
-                    android:layout_marginStart="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/san_francisco_bold"
                     android:text="Текущий прогресс"
                     android:textSize="16sp"
@@ -92,6 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:fontFamily="@font/san_francisco_regular"
+                    android:includeFontPadding="false"
                     android:text="0 слов"
                     android:textSize="14sp"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -115,6 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:fontFamily="@font/san_francisco_regular"
+                    android:includeFontPadding="false"
                     android:text="10 слов"
                     android:textSize="14sp"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -128,10 +130,10 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title_select_fast"
             style="@style/TextButton"
-            android:layout_marginHorizontal="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/san_francisco_bold"
             android:text="Быстрая"
@@ -143,16 +145,16 @@
             android:id="@+id/fast_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:scrollbars="none"
             app:layout_constraintTop_toBottomOf="@+id/title_select_fast">
 
             <LinearLayout
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/standart"
@@ -161,9 +163,9 @@
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/background_input1"
                     android:clickable="true"
-                    android:focusable="true"
                     android:drawableEnd="@drawable/ic_logout"
                     android:drawablePadding="12dp"
+                    android:focusable="true"
                     android:fontFamily="@font/san_francisco_bold"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="12dp"
@@ -172,33 +174,34 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/EGE"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
                     android:background="@drawable/background_input1"
+                    android:clickable="true"
                     android:drawableEnd="@drawable/ic_operation_block_1"
                     android:drawablePadding="8dp"
+                    android:focusable="true"
                     android:fontFamily="@font/san_francisco_bold"
+                    android:paddingVertical="12dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="12dp"
-                    android:paddingVertical="12dp"
                     android:text="ЕГЭ"
                     app:drawableTint="@color/blue_600" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/time"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_input1"
+                    android:clickable="true"
                     android:drawableEnd="@drawable/ic_operation_block_1"
                     android:drawablePadding="8dp"
+                    android:focusable="true"
                     android:fontFamily="@font/san_francisco_bold"
+                    android:paddingVertical="12dp"
                     android:paddingStart="16dp"
-                    android:paddingEnd="12dp"                    android:paddingVertical="12dp"
+                    android:paddingEnd="12dp"
                     android:text="На время"
                     app:drawableTint="@color/blue_600" />
 
@@ -213,8 +216,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="32dp"
             android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/san_francisco_bold"
             android:text="Все режимы"
             android:textSize="24sp"
@@ -223,10 +226,10 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/TrainField"
-            android:layout_marginHorizontal="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
             android:clickable="true"
             android:focusable="true"
             app:cardCornerRadius="24dp"

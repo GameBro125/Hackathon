@@ -15,9 +15,25 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="LetterButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:textAppearance">@style/TextLetter</item>
+        <item name="backgroundTint">@color/background_primary</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:textColor">@color/on_primary_button</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:layout_width">34dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="ResultButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:textAppearance">@style/TextButton</item>
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="backgroundTint">@color/black</item>
         <item name="cornerRadius">12dp</item>
         <item name="android:paddingTop">6.2dp</item>
@@ -36,6 +52,12 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextLetter">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
     <style name="WordChip" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="android:layout_height">32dp</item>
         <item name="android:layout_width">32dp</item>
@@ -50,7 +72,7 @@
     </style>
 
     <style name="OperationChip" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_height">42dp</item>
         <item name="android:layout_width">42dp</item>
         <item name="ensureMinTouchTargetSize">false</item>
         <item name="chipBackgroundColor">@color/base_500</item>
@@ -59,11 +81,10 @@
         <item name="iconEndPadding">0dp</item>
         <item name="chipStrokeColor">@android:color/transparent</item>
         <item name="rippleColor">#2DE3EAFA</item>
-        <item name="chipMinHeight">36dp</item>
         <item name="chipCornerRadius">8dp</item>
         <item name="android:textColor">@color/base_800</item>
         <item name="android:textAppearance">@style/TextButton</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">

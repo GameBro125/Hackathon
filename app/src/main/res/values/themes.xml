@@ -10,6 +10,7 @@
         <item name="android:windowBackground">@color/base_300</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:fitsSystemWindows">false</item>
+        <item name="materialButtonStyle" >@style/LetterButton</item>
         <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
